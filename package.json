@@ -18,12 +18,9 @@
   },
   "homepage": "https://github.com/pmg7522/MySQL-practice#readme",
   "dependencies": {
-    "axios": "^0.26.1",
     "cors": "^2.8.5",
     "express": "^4.17.3",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.15",
-    "sequelize": "^6.17.0",
-    "sequelize-cli": "^6.4.1"
+    "nodemon": "^2.0.15"
   }
 }
