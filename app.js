@@ -1,20 +1,19 @@
-const express = require("express");
-const cors = require("cors");
+import express from "express";
+import cors from "cors";
 
 const app = express();
+const port = 3000;
 
 app.use(
   cors({
     origin: true,
-    methods: ["GET", "POST", "PATCH", "OPTIONS", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
 
-const port = 3000;
-
 const server = app.listen(port, () => {
-  console.log(`서버가 ${port}번에서 작동중입니다.`);
-});
+  console.log(`${port}로 작동중.`);
+})
 
-module.exports = server;
+export default server;
