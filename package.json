@@ -20,6 +20,7 @@
   "homepage": "https://github.com/pmg7522/MySQL-practice#readme",
   "dependencies": {
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.17.3",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.15"
