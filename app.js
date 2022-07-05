@@ -1,7 +1,10 @@
 import express from "express";
 import cors from "cors";
 
-import db from "./db/index.js"
+import { db } from "./config/config.js";
+
+const conn = db.init();
+db.connect(conn);
 
 const app = express();
 const port = 3000;
@@ -15,7 +18,7 @@ app.use(
 );
 
 const server = app.listen(port, () => {
-  console.log(`${port}로 작동중.`);
+  console.log(`서버 작동중 ${port}`);
 });
 
 export default server;
