@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 
-import { db } from "./config/config.js";
+import { db } from "./config/db.js";
 
 const conn = db.init();
 db.connect(conn);
