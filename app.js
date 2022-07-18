@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import morgan from "morgan";
 
 import { db } from "./config/db.js";
 
@@ -16,6 +17,7 @@ app.use(
     credentials: true,
   })
 );
+app.use(morgan(':method :url | :status | :response-time ms | :date[iso] | '));
 
 const server = app.listen(port, () => {
   console.log(`서버 작동중 ${port}`);
