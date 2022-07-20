@@ -5,9 +5,10 @@ const { username, password } = req.body;
 
 const hash = crypto.SHA256(password, process.env.SALT).toString();
 
-const sql = `SELECT username, password FROM User WHERE username = ${username} AND password = ${hash}`;
+const sql = `SELECT username, password FROM User WHERE username = ? AND password = ?`;
+const params = [username, password];
 
-db.query(sql, (err, row) => {
+db.query(sql, params, (err, row) => {
   if (err) {
     console.log(err);
   }
