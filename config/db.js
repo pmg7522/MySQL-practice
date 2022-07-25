@@ -21,6 +21,7 @@ module.exports = {
   init: () => {
     return mysql.createConnection(dbConfig);
   },
+
   connect: (conn) => {
     conn.connect((err) => {
       if (err) {
