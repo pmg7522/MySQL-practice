@@ -1,7 +1,7 @@
-import { db } from "./config/db.js";
-import crypto from "crypto-js"
+const db = require("./config/db.js");
+const crypto = require("crypto-js");
 
-export default = (req, res) => {
+module.exports = (req, res, next) => {
   const { username, password } = req.body;
 
   const hash = crypto.SHA256(password, process.env.SALT).toString();

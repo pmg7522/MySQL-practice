@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { trycatch } from "../middlewares/trycatch";
+const { Router } = require("express");
+const tryCatch = require("../middlewares/trycatch");
 
 const router = Router();
 

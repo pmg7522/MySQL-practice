@@ -1,6 +1,6 @@
-import mysql from "mysql";
+const mysql = require("mysql");
 
-import dotenv from "dotenv";
+const dotenv = require("dotenv");
 dotenv.config();
 
 const {
@@ -17,7 +17,7 @@ const dbConfig = {
   database: DATABASE_NAME
 }
 
-export const db = {
+module.exports = {
   init: () => {
     return mysql.createConnection(dbConfig);
   },

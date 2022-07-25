@@ -1,8 +1,8 @@
-import express from "express";
-import cors from "cors";
-import morgan from "morgan";
+const express = require("express");
+const cors = require("cors");
+const morgan = require("morgan");
 
-import { db } from "./config/db.js";
+const db = require("./config/db.js");
 
 const conn = db.init();
 db.connect(conn);
@@ -23,4 +23,4 @@ const server = app.listen(port, () => {
   console.log(`서버 작동중 ${port}`);
 });
 
-export default server;
+module.exports = server;

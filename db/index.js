@@ -1,8 +1,9 @@
-import mysql from "mysql";
-import dotenv from "dotenv";
+const mysql = require("mysql");
+const config = require("../config/config.js");
 
-import { config } from "../config/config.js";
+const dotenv = require("dotenv");
 dotenv.config();
+
 
 const db = mysql.createConnection(
   config[process.env.NODE_ENV]

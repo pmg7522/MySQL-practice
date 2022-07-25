@@ -1,4 +1,4 @@
-import { unknownError } = from "../error/errorcode.js";
+const { unknownError } = require("../error/errorcode.js");
 
 tryCatch = (fn) => {
   return (async (req, res, next) => {
@@ -12,6 +12,4 @@ tryCatch = (fn) => {
   })
 };
 
-export const {
-  tryCatch
-};
+module.exports = tryCatch
