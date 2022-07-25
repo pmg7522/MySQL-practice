@@ -1,8 +1,10 @@
+const mysql = require('mysql');
 const db = require("../../config/db");
 const crypto = require("crypto-js");
 
+const conn = mysql.createConnection(db);
+
 module.exports = (req, res, next) => {
-  console.log(req.body);
   const { username, password } = req.body;
 
   const hash = crypto.SHA256(password, process.env.SALT).toString();
@@ -10,9 +12,13 @@ module.exports = (req, res, next) => {
   const sql = 'INSERT INTO User(`username`, `password`) VALUES(?, ?)';
   const params = [username, password];
 
-  db.query(sql, params, (err, row) => {
+  conn.connect();
+
+  conn.query(sql, params, (err, row) => {
     if (err) {
       console.log(err);
     }
   });
+
+  conn.end();
 }
