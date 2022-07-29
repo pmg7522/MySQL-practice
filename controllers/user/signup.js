@@ -14,9 +14,14 @@ module.exports = (req, res, next) => {
 
   conn.connect();
 
-  conn.query(sql, params, (err, row) => {
+  conn.query(sql, params, (err, res) => {
     if (err) {
       console.log(err);
+    } else {
+      return res.status(201).send({
+        message: "회원가입이 완료되었습니다.",
+        data: username
+      });
     }
   });
 
