@@ -1,30 +1,36 @@
 const mysql = require('mysql');
 const db = require('../config/db');
 
-const con = mysql.createConnection(db);
+const dbConnect = async () => {
+  return await mysql.createConnection(db);
+}
 
 module.exports = {
-  getUserDetail: (id) => {
+  getUserDetail: async (id) => {
+    let data = {};
+
     const sql = 'SELECT id, username FROM User WHERE id = ?';
-    const params = id
+    const params = id;
 
-    con.connect();
+    const db = await dbConnect();
 
-    con.query(sql, params, (error, result) => {
+    const userInfo = await db.query(sql, params, (error, result) => {
       if (error) {
-        console.log(error);
+        console.log(error)
       } else {
-        return result.toJSON();
+        console.log(1)
+        data = (JSON.parse(JSON.stringify(result)))[0];
+        console.log(2, data);
+        return data;
       }
     });
 
-    con.end();
+    await db.end();
+    console.log(3)
   },
 
   getUserList: () => {
     const sql = 'SELECT id, username FROM User'
-
-    con.connect();
 
     con.query(sql, params, (error, result) => {
       if (error) {
@@ -33,7 +39,5 @@ module.exports = {
         return result;
       }
     });
-
-    con.end();
   }
 }

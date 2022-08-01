@@ -12,17 +12,13 @@ module.exports = (req, res, next) => {
   const sql = 'SELECT username, password FROM User WHERE username = ? AND password = ?';
   const params = [username, password];
 
-  conn.connect();
-
   conn.query(sql, params, (error, result) => {
     if (error) {
       console.log(error);
     } else {
       return res.status(200).send({
-        message: "로그인에 성공하였습니다."
+        message: '로그인에 성공하였습니다.'
       });
     }
   });
-
-  conn.end();
 }

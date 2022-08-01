@@ -12,8 +12,6 @@ module.exports = (req, res, next) => {
   const sql = 'INSERT INTO User(`username`, `password`) VALUES(?, ?)';
   const params = [username, password];
 
-  conn.connect();
-
   conn.query(sql, params, (err, res) => {
     if (err) {
       console.log(err);
@@ -24,6 +22,4 @@ module.exports = (req, res, next) => {
       });
     }
   });
-
-  conn.end();
 }
