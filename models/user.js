@@ -11,22 +11,22 @@ module.exports = {
 
     try {
       const userInfo = await pool.query(sql, params);
+
       return userInfo[0][0];
-    }
-    catch (err) {
+    } catch (err) {
       console.log("error", err);
     }
   },
 
-  getUserList: () => {
-    const sql = 'SELECT id, username FROM User'
+  getUserList: async () => {
+    const sql = 'SELECT id, username FROM User limit ? ?'
 
-    con.query(sql, params, (error, result) => {
-      if (error) {
-        console.log(error);
-      } else {
-        return result;
-      }
-    });
+    try {
+      const userInfo = await pool.query(sql, params);
+
+      return userInfo[0];
+    } catch (err) {
+      console.log("error", err);
+    }
   }
 }
