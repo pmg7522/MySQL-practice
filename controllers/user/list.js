@@ -13,6 +13,8 @@ module.exports = async (req, res, next) => {
 
   return res.status(200).send({
     message: "유저 목록 요청이 완료되었습니다.",
-    data: userList
+    data: userList,
+    count:
+      page
   });
 };
