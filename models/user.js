@@ -1,9 +1,5 @@
 const pool = require("../config/db");
 
-// const dbConnect = async () => {
-//   return await mysql.createConnection(db);
-// }
-
 module.exports = {
   getUserDetail: async (id) => {
     const sql = 'SELECT id, username FROM User WHERE id = ?';
@@ -18,9 +14,9 @@ module.exports = {
     }
   },
 
-  getUserList: async () => {
-    const sql = 'SELECT id, username FROM User limit ? ?'
-
+  getUserList: async (page, limit) => {
+    const sql = 'SELECT id, username FROM User limit ?, ?';
+    const params = [page, limit];
     try {
       const userInfo = await pool.query(sql, params);
 
