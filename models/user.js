@@ -23,7 +23,7 @@ module.exports = {
 
       const userInfo = await pool.query(listSql, params);
       const countQuery = await pool.query(countSql);
-      console.log(countQuery[0][0].totalCount);
+
       return userInfo[0];
     }
     catch (err) {
