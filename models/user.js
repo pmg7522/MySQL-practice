@@ -17,14 +17,19 @@ module.exports = {
 
   getUserList: async (page, limit) => {
     try {
-      const listSql = 'SELECT SQL_CALC_FOUND_ROWS * FROM User limit ?, ?';
+      const listSql = 'SELECT SQL_CALC_FOUND_ROWS id, username FROM User limit ?, ?';
       const countSql = 'SELECT FOUND_ROWS() as totalCount'
       const params = [page, limit];
 
       const userInfo = await pool.query(listSql, params);
       const countQuery = await pool.query(countSql);
 
-      return userInfo[0];
+      const data = {
+        userList: userInfo[0],
+        totalCount: countQuery[0][0].totalCount,
+      }
+
+      return data;
     }
     catch (err) {
       console.log("error", err);
