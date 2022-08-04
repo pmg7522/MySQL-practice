@@ -1,6 +1,6 @@
 const User = require('../../models/user');
 
-module.exports = async (req, res, next) => {
+module.exports = (req, res, next) => {
   const { page, limit, keyword } = req.query;
 
   const pageInt = parseInt(page);
@@ -15,7 +15,7 @@ module.exports = async (req, res, next) => {
   const pageSize = pageInt * limitInt - limitInt;
   const limitSize = pageInt * limitInt;
 
-  const listData = await User.getUserList(pageSize, limitSize);
+  const listData = User.getList(pageSize, limitSize);
 
   const totalPage = Math.ceil(limitSize / listData.totalCount);
 
