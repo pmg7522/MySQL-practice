@@ -12,4 +12,4 @@ tryCatch = (fn) => {
   })
 };
 
-module.exports = tryCatch
+module.exports = tryCatch;

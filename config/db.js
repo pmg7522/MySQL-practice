@@ -17,10 +17,3 @@ const pool = mysql.createPool({
 })
 
 module.exports = pool;
-
-// module.exports = {
-//   host: DATABASE_HOST,
-//   user: DATABASE_USERNAME,
-//   password: DATABASE_PASSWORD,
-//   database: DATABASE_NAME
-// };

@@ -4,6 +4,7 @@ const crypto = require('crypto-js');
 module.exports = (req, res, next) => {
   const { username, password } = req.body;
 
+  // 비밀번호 암호화
   const hash = crypto.SHA256(password, process.env.SALT).toString();
 
   const currentUser = User.login(username, hash);
@@ -15,6 +16,6 @@ module.exports = (req, res, next) => {
   } else {
     return res.status(400).send({
       message: '아이디나 비밀번호가 일치하지 않습니다.'
-    })
+    });
   }
 }

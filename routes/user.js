@@ -10,10 +10,10 @@ const {
   userList,
 } = require("../controllers");
 
-router.post("/signup", tryCatch(userSignUp));
-router.post("/login", tryCatch(userLogin));
+router.post("/signup", tryCatch(userSignUp)); // 회원가입
+router.post("/login", tryCatch(userLogin)); // 로그인
 
-router.get("/detail/:id", tryCatch(userDetail));
-router.get("/list", tryCatch(userList));
+router.get("/detail/:id", tryCatch(userDetail)); // 상세정보
+router.get("/list", tryCatch(userList)); // 목록
 
 module.exports = router;
