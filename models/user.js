@@ -16,7 +16,7 @@ module.exports = {
   },
 
   // 로그인
-  login: async (username, password) => {
+  logIn: async (username, password) => {
     try {
       const sql = 'SELECT username, password FROM User WHERE username = ? AND password = ?';
       const params = [username, password];

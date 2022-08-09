@@ -11,18 +11,18 @@ const port = 3000;
 app.use(
   cors({
     origin: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
 
-app.use(morgan(':method :url | :status | :response-time ms | :date[iso] | '));
+app.use(morgan(':method :url | :status | :response-time ms | :date[iso] | ')); // API 요청 로그
 
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-app.use("/", routes)
+app.use("/", routes);
 
 app.get("/", (req, res, next) => {
   return res.status(200).send({ message: "Hello World" });
@@ -32,6 +32,7 @@ app.use((req, res, next) => {
   return res.status(404).send({ message: "API 주소를 확인해주세요." });
 });
 
+// 에러처리
 app.use((err, req, res, next) => {
   return res.status(err.status).send({
     message: err.message,

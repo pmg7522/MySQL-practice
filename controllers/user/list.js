@@ -1,4 +1,4 @@
-const User = require('../../models/user');
+const User = require("../../models/user");
 
 module.exports = (req, res, next) => {
   const { page, limit, keyword } = req.query;
@@ -12,14 +12,26 @@ module.exports = (req, res, next) => {
 
   const listData = User.getList(pageSize, limitSize);
 
-  const totalPage = Math.ceil(limitSize / listData.totalCount); // 총 페이지 수 (올림)
+  // 총 페이지 수 (올림)
+  const totalPage = Math.ceil(limitSize / listData.totalCount);
 
-  return res.status(200).send({
-    message: "유저 목록 요청이 완료되었습니다.",
-    data: listData.userList,
-    totalCount: listData.totalCount,
-    totalPage,
-    nowPage: pageInt,
-    searchKeyword: keyword,
-  });
+  if (!listData.length) {
+    res.status(204).send({
+      message: "유저가 존재하지 않습니다.",
+      data: [],
+      totalCount: 0,
+      totalPage: 1,
+      nowPage: pageInt,
+      searchKeyword: keyword,
+    });
+  } else {
+    res.status(200).send({
+      message: "유저 목록 요청이 완료되었습니다.",
+      data: listData.userList,
+      totalCount: listData.totalCount,
+      totalPage,
+      nowPage: pageInt,
+      searchKeyword: keyword,
+    });
+  }
 };
