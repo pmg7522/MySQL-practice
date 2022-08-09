@@ -11,7 +11,7 @@ module.exports = {
 
       return userSignUp[0];
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   },
 
@@ -25,7 +25,7 @@ module.exports = {
 
       return currentUser[0];
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   },
 
@@ -39,7 +39,7 @@ module.exports = {
 
       return userInfo[0][0];
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   },
 
@@ -61,7 +61,22 @@ module.exports = {
 
       return data;
     } catch (err) {
-      console.log(err);
+      console.error(err);
+    }
+  },
+
+  // 수정
+  editInfo: async (id, changePassword) => {
+    try {
+      const sql = 'UPDATE User SET password = ? WHERE id = ?';
+      // const sql = 'UPDATE User SET username = ?, password = ? WHERE id = ?'
+      const params = [password, id];
+
+      const editUser = await pool.query(sql, params);
+
+      console.log(editUser);
+    } catch (err) {
+      console.error(err);
     }
   }
 }
