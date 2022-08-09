@@ -16,7 +16,7 @@ app.use(
   })
 );
 
-app.use(morgan(':method :url | :status | :response-time ms | :date[iso] | ')); // API 요청 로그
+app.use(morgan(":method :url | :status | :response-time ms | :date[iso] | ")); // API 요청 로그
 
 app.use(express.json());
 app.use(bodyParser.json());
