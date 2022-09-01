@@ -1,10 +1,3 @@
-CREATE TABLE User (
-  id INT AUTO_INCREMENT,
-  username VARCHAR(255) NOT NULL,
-  password VARCHAR(255) NOT NULL,
-  PRIMARY KEY (id)
-);
-
 CREATE TABLE Post (
   id INT AUTO_INCREMENT,
   user_id INT NOT NULL,
